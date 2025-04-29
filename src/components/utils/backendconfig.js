@@ -1,2 +1,6 @@
-export const register_api = 'http://localhost:8000/api/users/register/';
-export const login_api = 'http://localhost:8000/api/users/login/';
+const django_url = 'http://localhost:8000/api/';
+
+export const register_api = `${django_url}users/register/`;
+export const login_api = `${django_url}users/login/`;
+
+export const browse_api = `${django_url}videos/browse/`;

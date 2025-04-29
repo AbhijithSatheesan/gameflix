@@ -7,6 +7,7 @@ import { register_api, login_api} from './utils/backendconfig'
 import { signIn, signUp } from './utils/authService'
 import { addUser } from './utils/redux/userSlice'
 import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 
 const Login = () => {
@@ -24,6 +25,9 @@ const Login = () => {
 
 // Initialize the useDispatch hook
     const dispatch = useDispatch()
+
+// Use navigate
+    const navigate = useNavigate()
 
     //  Handle the button click event
     const handleButtonClick = async () =>{
@@ -53,7 +57,11 @@ const Login = () => {
                 dispatch(addUser(data))
 
                 setErrorMessage(data.message || 'Sign-in successful')
+             
                 // Handle successful sign-in
+
+                //  navigate to browse page
+                navigate('/browse')
             } else {
                 // Call signUp utility function
                 const data = await signUp(register_api, email.current.value, password.current.value, username.current.value);
@@ -64,6 +72,9 @@ const Login = () => {
                 
                 setErrorMessage(data.message || 'Sign-up successful')
                 // Handle successful sign-up
+
+                //  navigate to browse page
+                navigate('/browse')
             }
         } catch (error) {
             setErrorMessage(error.message);

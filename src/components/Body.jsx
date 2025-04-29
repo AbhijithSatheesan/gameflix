@@ -4,16 +4,28 @@ import Header from './Header'
 import Browse from './Browse'
 import VideoPlayer from './VideoPlayer'
 import {createBrowserRouter, RouterProvider} from 'react-router-dom'
+import ProtectedRoute from './ProtectedRoute'
+import PublicRoute from './PublicRoutes'
+
+
 const Body = () =>{
 
     const appRouter = createBrowserRouter([
         {
             path: '/',
-            element: <Login/>
+            element: (
+                <PublicRoute>
+                    <Login/>
+                </PublicRoute>
+            )
         },
         {
             path: 'browse',
-            element: <Browse/>
+            element: (
+                <ProtectedRoute>
+                    <Browse/>
+                </ProtectedRoute>
+            )
         }
     ])
 
