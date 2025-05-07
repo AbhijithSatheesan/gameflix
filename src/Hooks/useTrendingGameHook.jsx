@@ -19,7 +19,7 @@ const useTrendingGameHook = () => {
             }
          );
          const json = await data.json();
-         console.log(json);
+         
          dispatch(addTrendingBrowsePageContents(json));
     };
 

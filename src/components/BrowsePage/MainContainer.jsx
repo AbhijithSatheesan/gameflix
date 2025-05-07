@@ -1,22 +1,33 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
-import VideoBackground from './VideoBackground'
-import VideoTitle from './VideoTitle'
+import React from 'react';
+import { useSelector } from 'react-redux';
+import VideoBackground from './VideoBackground';
+import VideoTitle from './VideoTitle';
+import VideoPlayer from '../VideoPlayer';
 
 const MainContainer = () => {
-    // give ?.(optional chaining) for browse page, or  else it will give error if not present
-    const nowPlaying = useSelector((store) => store.browsePage?.browsePageContents?.Trending_game || [])
-  return (
-    <div>
-        <VideoBackground></VideoBackground>
-        <VideoTitle></VideoTitle>
-        
-    </div>
-  )
-}
+    const nowPlaying = useSelector((store) => store.browsePage?.browsePageContents?.Trending_game);
+    if (!nowPlaying) return null;
 
-export default MainContainer
+    const { name, description } = nowPlaying;
 
+    return (
+        <div className="relative w-full h-[70vh] ">
+            
+            {/* give video z index of 0 so that they title can be on top of it */}
+            <div className="absolute top-0 left-0 w-full h-full z-0">
+                <VideoBackground />
+            </div>
+
+            
+            <div className="absolute top-0 left-0 w-full h-full z-10 flex items-start">
+                <VideoTitle game_name={name} game_description={description} />
+            </div>
+            
+        </div>
+    );
+};
+
+export default MainContainer;
 
 
 
