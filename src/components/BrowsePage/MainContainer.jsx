@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import VideoBackground from './VideoBackground';
 import VideoTitle from './VideoTitle';
-import VideoPlayer from '../VideoPlayer';
+
 
 const MainContainer = () => {
     const nowPlaying = useSelector((store) => store.browsePage?.browsePageContents?.Trending_game);

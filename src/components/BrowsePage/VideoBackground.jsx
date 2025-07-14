@@ -15,7 +15,7 @@ const VideoBackground = () => {
       <ReactPlayer
         url={trailer_1}
         // playing
-        playing = {false}
+        playing 
         loop
         muted
         width="100%"

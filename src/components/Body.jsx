@@ -2,10 +2,10 @@ import React from 'react'
 import Login from './Login'
 import Header from './Header'
 import Browse from './Browse'
-import VideoPlayer from './VideoPlayer'
 import {createBrowserRouter, RouterProvider} from 'react-router-dom'
 import ProtectedRoute from './ProtectedRoute'
 import PublicRoute from './PublicRoutes'
+import CategoryPage from './BrowsePage/CategoryPage'
 
 
 const Body = () =>{
@@ -26,7 +26,15 @@ const Body = () =>{
                     <Browse/>
                 </ProtectedRoute>
             )
-        }
+        },
+        {
+            path: 'category/:category',
+            element: (
+                <ProtectedRoute>
+                    <CategoryPage/>
+                </ProtectedRoute>
+            )
+        },
     ])
 
     return(

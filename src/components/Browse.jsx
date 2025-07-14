@@ -1,24 +1,31 @@
 import React from "react";
 import Header from "./Header";
 import useTrendingGameHook from "../Hooks/useTrendingGameHook";
-import VideoPlayer from "./VideoPlayer";
+import useGameListHook from '../Hooks/useGameListHook';
 import MainContainer from "./BrowsePage/MainContainer";
 import SecondaryContainer from "./BrowsePage/SecondaryContainer";
 
 const Browse = () => {
     useTrendingGameHook();
+    useGameListHook();
 
     return (
-        <div>
-            <Header />
+        <div className="relative">
+            {/* Fixed Header with z-index */}
+            <div className="fixed top-0 w-full z-50">
+                <Header />
+            </div>
             
-            {/* Spacer to push content below fixed header */}
-            <div className="py-4" />
-
-            <MainContainer />
-            <SecondaryContainer />
-            
-            <h1 className="text-blue-500">Browse Component</h1>
+            {/* Content Container with padding for fixed header */}
+            <div className="pt-16"> {/* Adjust this value based on your header height */}
+                <div>
+                    <MainContainer />
+                </div>
+                <div className="pt-10">
+                    <SecondaryContainer />
+                </div>
+                
+            </div>
         </div>
     );
 };

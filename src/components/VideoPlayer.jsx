@@ -1,53 +1,73 @@
-import React, { useState } from "react";
-import ReactPlayer from "react-player";
+// import React from 'react';
+// import GameList from './GameList';
+// import { useSelector } from 'react-redux';
 
-export default function VideoPlayer() {
-  const [playing, setPlaying] = useState(false);
-  const [volume, setVolume] = useState(0.7);
+// const SecondaryContainer = () => {
+//   const games = useSelector((store) => store.gameList?.gameListContents);
 
-  return (
-    <div className="flex justify-center items-center h-screen bg-black">
-      <div className="relative w-full max-w-6xl h-[80vh]">
-        {/* Video Player */}
-        <ReactPlayer
-          url="https://www.youtube.com/watch?v=dGF1y5sKr4g"
-          playing={playing}
-          controls={false} // Disable default YouTube controls
-          width="100%"
-          height="100%"
-          volume={volume}
-          config={{
-            youtube: {
-              playerVars: {
-                modestbranding: 1, 
-                rel: 0, 
-                showinfo: 0, 
-                fs: 0, 
-                iv_load_policy: 3, 
-              },
-            },
-          }}
-        />
+//   if (!games) {
+//     return (
+//       <div className="py-10 px-4">
+//         <div className="animate-pulse space-y-8">
+//           {[...Array(3)].map((_, i) => (
+//             <div key={i}>
+//               <div className="h-8 w-1/4 bg-gray-700 rounded mb-4"></div>
+//               <div className="flex space-x-4">
+//                 {[...Array(5)].map((_, j) => (
+//                   <div key={j} className="h-64 w-48 bg-gray-700 rounded-lg"></div>
+//                 ))}
+//               </div>
+//             </div>
+//           ))}
+//         </div>
+//       </div>
+//     );
+//   }
 
-        {/* Custom Controls */}
-        <div className="absolute bottom-4 left-0 right-0 flex justify-between px-4 py-2 bg-black bg-opacity-50 rounded">
-          <button
-            onClick={() => setPlaying(!playing)}
-            className="text-white text-xl"
-          >
-            {playing ? "⏸ Pause" : "▶ Play"}
-          </button>
-          <input
-            type="range"
-            min="0"
-            max="1"
-            step="0.05"
-            value={volume}
-            onChange={(e) => setVolume(parseFloat(e.target.value))}
-            className="w-32"
-          />
-        </div>
-      </div>
-    </div>
-  );
-}
+//   const { Trending_games, Top_rated_games, Main_category } = games;
+
+//   return (
+//     <div className="py-10 px-4 bg-gradient-to-b from-gray-900 to-black">
+//       <div className="max-w-7xl mx-auto">
+//         <GameList 
+//           title="🔥 Trending Now" 
+//           games={Trending_games} 
+//           category="trending"  // Add this
+//         />
+//         <GameList 
+//           title="⭐ Top Rated" 
+//           games={Top_rated_games} 
+//           category="top-rated"  // Add this
+//         />
+
+//         {/* Dynamic Categories */}
+//         {Main_category && Object.entries(Main_category).map(([categoryName, games]) => (
+//           <GameList 
+//             key={categoryName} 
+//             title={`🎮 ${categoryName}`} 
+//             games={games.slice(0, 10)}
+//             category={categoryName.toLowerCase().replace(/\s+/g, '-')}  // Convert to URL-safe format
+//           />
+//         ))}
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default SecondaryContainer;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

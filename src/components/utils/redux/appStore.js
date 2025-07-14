@@ -2,7 +2,8 @@ import { configureStore } from "@reduxjs/toolkit";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage"; // Defaults to localStorage for web
 import userReducer from "./userSlice";
-import browsePageReducer from './browsePageSlice'
+import browsePageReducer from './browsePageSlice';
+import gameListReducer from './gameListSlice'
 
 // Persist configuration
 const userPersistConfig = {
@@ -10,14 +11,25 @@ const userPersistConfig = {
     storage, // Use localStorage
 };
 
-// Create a persisted reducer for the user slice
+const gameListPersistConfig = {
+    key: "game_list",
+    storage,
+};
+
+
+// Create a persisted reducer for the persisted slices
 const persistedUserReducer = persistReducer(userPersistConfig, userReducer);
+const persistedGameListReducer = persistReducer(gameListPersistConfig, gameListReducer);
+
+
 
 // Configure the store
 const appstore = configureStore({
     reducer: {
         user: persistedUserReducer, // Use the persisted reducer
         browsePage: browsePageReducer,
+        gameList: persistedGameListReducer, // Persisted game list reducer
+        
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
